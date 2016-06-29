@@ -1,4 +1,4 @@
 class Gift < ActiveRecord::Base
   belongs_to :pair
-  belongs_to :trade, through: :pair
+  has_one :trade, through: :pair
 end
