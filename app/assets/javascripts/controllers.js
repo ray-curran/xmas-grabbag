@@ -1,4 +1,6 @@
-angular.module('GrabBag.controllers', [])
-.controller('HomeCtrl', function($scope, $http) {
-  $scope.message = 'hai';
+angular.module('GrabBag.controllers', ['GrabBag.factories'])
+.controller('HomeCtrl', function($scope, $http, allpairs) {
+  allpairs.success(function(data) {
+    $scope.allpairs = data;
+  })
 })

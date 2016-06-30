@@ -11,6 +11,8 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'faker'
 gem 'angular-rails-templates'
 gem 'bower-rails'
+gem 'active_model_serializers', '~> 0.10.0'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
