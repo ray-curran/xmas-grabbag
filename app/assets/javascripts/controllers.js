@@ -11,3 +11,9 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
   })
 
 })
+
+.controller('PersonCtrl', function($scope, $http, $routeParams) {
+
+  $scope.id = $routeParams.id;
+
+})
