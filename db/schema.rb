@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20160629214810) do
 
   create_table "gifts", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "bought"
+    t.boolean  "bought",     default: false
     t.integer  "pair_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "pairs", force: :cascade do |t|
