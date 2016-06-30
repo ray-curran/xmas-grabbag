@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="GrabBag">
 <head>
   <title>Grabbag</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -25,7 +25,7 @@
   <img class="img-responsive col-md-10 col-md-offset-1" src="http://i.imgur.com/FucTZIp.jpg" alt="bigfampic">
 </div>
 
-<body ng-app="GrabBag" ng-controller="HomeCtrl">
+<body ng-controller="HomeCtrl">
 
 <%= yield %>
 
