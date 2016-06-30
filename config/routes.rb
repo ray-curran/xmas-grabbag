@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     resources :pairs
+    get '/kidpairs' => 'pairs#kidpairs'
+    get '/adultpairs' => 'pairs#adultpairs'
   end
 
 
