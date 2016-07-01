@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160629214810) do
     t.integer  "family_id"
     t.string   "name"
     t.string   "adult_or_kid"
+    t.date     "birthday"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

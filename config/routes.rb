@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  root 'application#index'
 
   get '/logout' => 'users#destroy', as: 'logout'
   post '/login' => 'users#login', as: 'login'
@@ -9,8 +8,13 @@ Rails.application.routes.draw do
     resources :pairs
     get '/kidpairs' => 'pairs#kidpairs'
     get '/adultpairs' => 'pairs#adultpairs'
+    get '/allpairs' => 'pairs#allpairs'
+    get '/allpeople' => 'pairs#allpeople'
+    get '/tradegifts' => 'pairs#tradegifts'
   end
 
+  root 'application#index'
 
+  get '*path', :to => redirect('/#/%{path}')
 
 end

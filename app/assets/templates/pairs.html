@@ -16,8 +16,10 @@
         </thead>
         <tbody>
           <tr ng-repeat="pair in kidpairs | orderBy:'giver'" >
-            <td>{{pair.giver}}</td>
-            <td>{{pair.recipient}}</td>
+
+              <td>{{pair.giver}}</td>
+              <td><a ng-href="/person/{{pair.recipient_id}}">{{pair.recipient}}</a></td>
+
           </tr>
         </tbody>
       </table>
@@ -37,12 +39,12 @@
           </tr>
         </thead>
         <tbody>
-           <tr ng-repeat="pair in adultpairs | orderBy:'giver'" >
-            <td>{{pair.giver}}</td>
-            <td>{{pair.recipient}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+         <tr ng-repeat="pair in adultpairs | orderBy:'giver'" >
+          <td>{{pair.giver}}</td>
+          <td><a ng-href="/person/{{pair.recipient_id}}">{{pair.recipient}}</a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
 </div>

@@ -5,7 +5,11 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+<base href="/">
 </head>
+
+<body ng-controller="HomeCtrl">
+
 
 <div class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -25,7 +29,6 @@
   <img class="img-responsive col-md-10 col-md-offset-1" src="http://i.imgur.com/FucTZIp.jpg" alt="bigfampic">
 </div>
 
-<body ng-controller="HomeCtrl">
 
 <%= yield %>
 

@@ -26,4 +26,31 @@ class Api::PairsController < ApplicationController
     render json: trades_with_names
   end
 
+  def allpairs
+    trades_with_names = Trade.last.pairs.map do |trade|
+        {id: trade.id,
+        recipient_id: trade.recipient_id,
+        giver_id: trade.giver_id,
+        trade_id: trade.trade_id,
+        recipient: Person.find_by_id(trade.recipient_id).name,
+        giver: Person.find_by_id(trade.giver_id).name}
+    end
+    render json: trades_with_names
+  end
+
+  def tradegifts
+    gifts = Trade.last.gifts.map do|gift|
+      {id: gift.id,
+        name: gift.name,
+        bought: gift.bought,
+        pair_id: gift.pair_id,
+        recipient_id: gift.recipient.id}
+    end
+    render json: gifts
+  end
+
+  def allpeople
+    render json: Person.all
+  end
+
 end

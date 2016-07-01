@@ -1,16 +1,35 @@
 (function (){
   var app = angular.module('GrabBag', ["ngRoute", 'GrabBag.controllers', 'GrabBag.factories', 'templates'])
-  .config(['$routeProvider',
-    function config($routeProvider) {
+  .config(['$routeProvider', '$locationProvider',
+    function config($routeProvider, $locationProvider) {
       $routeProvider.
-        when('/', {
-          template: '<pairs></pairs>'
-        })
-    }
-  ])
+      when('/', {
+        template: '<pairs></pairs>'
+      })
+      .when('/person/:id', {
+        template: '<person></person>'
+      })
+      .otherwise({redirectTo: function(current, path, search) {
+        if(search.goto) {
+          return '/' + search.goto;
+        }
+        return '/'
+      }
+    });
 
-.component('pairs', {
-  templateUrl: 'pairs.html',
-  controller: 'HomeCtrl'
-})
+      $locationProvider.html5Mode({
+        enabled: true
+      });
+
+    }
+    ])
+
+  .component('pairs', {
+    templateUrl: 'pairs.html',
+    controller: 'HomeCtrl'
+  })
+  .component('person', {
+    templateUrl: 'person.html',
+    controller: 'PersonCtrl'
+  })
 })();
