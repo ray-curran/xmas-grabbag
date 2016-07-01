@@ -26,11 +26,11 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
   $scope.anyBought = function anyBought(gifts) {
     if(gifts) {
-    var any = gifts.filter(function(presents) {
-      return presents.bought;
-    })
-    return any.length > 0;
-  }
+      var any = gifts.filter(function(presents) {
+        return presents.bought;
+      })
+      return any.length > 0;
+    }
   }
 
 
