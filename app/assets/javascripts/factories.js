@@ -11,3 +11,15 @@ angular.module('GrabBag.factories', [])
       return data;
     });
 }])
+
+.factory('allpeople', ['$http', function($http) {
+  return $http.get('/api/allpeople').success(function(data){
+      return data;
+    });
+}])
+
+.factory('tradegifts', ['$http', function($http) {
+  return $http.get('/api/tradegifts').success(function(data){
+      return data;
+    });
+}])

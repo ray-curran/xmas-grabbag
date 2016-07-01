@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :pairs
     get '/kidpairs' => 'pairs#kidpairs'
     get '/adultpairs' => 'pairs#adultpairs'
+    get '/allpairs' => 'pairs#allpairs'
+    get '/allpeople' => 'pairs#allpeople'
+    get '/tradegifts' => 'pairs#tradegifts'
   end
 
   root 'application#index'
