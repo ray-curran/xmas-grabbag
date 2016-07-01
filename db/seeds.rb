@@ -17,12 +17,12 @@ families_for_creation = [
 Family.create!(families_for_creation)
 
 currans_for_creation = [
-  {name: 'Ray', adult_or_kid: 'adult'},
-  {name: 'Raymond', adult_or_kid: 'kid'},
-  {name: 'Kaitlin', adult_or_kid: 'kid'},
-  {name: 'Brendan', adult_or_kid: 'kid'},
-  {name: 'Theresa', adult_or_kid: 'kid'},
-  {name: 'Mary Pat', adult_or_kid: 'adult'}
+  {name: 'Ray', adult_or_kid: 'adult', birthday: Date.new(1957,5,27)},
+  {name: 'Raymond', adult_or_kid: 'kid', birthday: Date.new(1988,10,25)},
+  {name: 'Kaitlin', adult_or_kid: 'kid', birthday: Date.new(1987,4,17)},
+  {name: 'Brendan', adult_or_kid: 'kid', birthday: Date.new(1991,2,19)},
+  {name: 'Theresa', adult_or_kid: 'kid', birthday: Date.new(1992,12,19)},
+  {name: 'Mary Pat', adult_or_kid: 'adult', birthday: Date.new(1959,7,5)}
 ]
 
 seans_for_creation = [

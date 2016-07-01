@@ -2,8 +2,28 @@
 <div class='container'>
   <div class="row">
     <div class="col-md-4 col-md-offset-1 text-center"><img style="border-radius: 100%" ng-src="https://lh3.googleusercontent.com/-Y2IJzlUUV70/AAAAAAAAAAI/AAAAAAAAAAA/HMC3aK1S30o/photo.jpg"><br>
-    <h1>{{person.name}}</h1>
+    <h1 class="white-text">{{person.name}}</h1>
     </div>
-    <div class="col-md-7 gray-back"></div>
+    <div class="col-md-6 gray-back">
+      <h2 class="white-text">Age: {{ calculateAge(person.birthday) }}</h2>
+      <h3><a target="_blank" ng-href="http://lmgtfy.com/?q=good+christmas+gift+for+{{calculateAge(person.birthday)}}+year+old">Need gift suggestions?</a></h3>
+      <hr>
+      <h3 class="white-text">Current Gift List:</h3>
+      <table class="maintable table white-text text-center">
+        <tbody>
+         <tr ng-repeat="gift in personGifts | filter:{bought:false}" >
+          <td><input type="checkbox" ng-model="gift.bought">  Bought?</td>
+          <td><a ng-href="gift.link">{{gift.name}}</a></td>
+          <td><a ng-href="gift.link">{{pair.recipient}}</a></td>
+        </tr>
+        <tr><td colspan='2'><a href="#">Add a new gift!</a></td></tr>
+        <tr ng-show="anyBought(personGifts)"><td colspan='2' class="text-left"><h3>Already Bought:</h3></td></tr>
+        <tr ng-repeat="gift in personGifts | filter:{bought:true}" >
+          <td><input type="checkbox" ng-model="gift.bought">  Bought?</td>
+          <td><a ng-href="gift.link">{{gift.name}}</a></td>
+          <td><a ng-href="gift.link">{{pair.recipient}}</a></td>
+        </tr>
+      </tbody>
+    </div>
   </div>
 </div>
