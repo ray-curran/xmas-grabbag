@@ -23,3 +23,9 @@ angular.module('GrabBag.factories', [])
       return data;
     });
 }])
+
+.factory('allpairs', ['$http', function($http) {
+  return $http.get('/api/allpairs').success(function(data){
+      return data;
+    });
+}])
