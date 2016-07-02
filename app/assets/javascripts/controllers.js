@@ -33,6 +33,11 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
     }
   }
 
+  $scope.markBought = function markBought(gift) {
+    console.log(gift);
+    $http.put('/gifts/' + gift.id + '/markbought');
+  }
+
 
   $scope.calculateAge = function calculateAge(birthday) { // birthday is a string - need to convert to date in next line
     var ageDifMs = Date.now() - new Date(birthday).getTime();
