@@ -14,10 +14,10 @@
          <tr ng-repeat="gift in personGifts | filter:{bought:false}" >
           <td><input ng-change="markBought(gift)" type="checkbox" ng-model="gift.bought">  Bought?</td>
           <td><a target="_blank" ng-href="http://google.com/search?q={{gift.name}}">{{gift.name}}</a></td>
-          <td><a href="#" class="red-text">Remove</a></td>
+          <td><a href="#" ng-click="removeGift(gift)" class="red-text">Remove</a></td>
         </tr>
         <tr><td colspan='3'><a href="#">Add a new gift!</a></td></tr>
-        <tr ng-show="anyBought(personGifts)"><td colspan='2' class="text-left"><h3>Already Bought:</h3></td></tr>
+        <tr ng-show="anyBought(personGifts)"><td colspan='3' class="text-left"><h3>Already Bought:</h3></td></tr>
         <tr ng-repeat="gift in personGifts | filter:{bought:true}" >
           <td><input ng-change="markBought(gift)" type="checkbox" ng-model="gift.bought">  Bought?</td>
           <td><a target="_blank" ng-href="http://google.com/search?q={{gift.name}}">{{gift.name}}</a></td>
