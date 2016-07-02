@@ -38,6 +38,7 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
   }
 
   $scope.removeGift = function removeGift(gift) {
+    $http.delete('/gifts/' + gift.id);
     $scope.personGifts = $scope.personGifts.filter(function(present) { return gift.id != present.id })
   }
 

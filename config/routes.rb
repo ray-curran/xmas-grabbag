@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get '/tradegifts' => 'pairs#tradegifts'
   end
 
-  resources :gifts do
+  resources :gifts, only: [:destroy, :create] do
     member do
         put '/markbought' => 'gifts#markbought'
       end
