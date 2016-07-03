@@ -31,5 +31,6 @@
   .component('person', {
     templateUrl: 'person.html',
     controller: 'PersonCtrl'
-  })
+  });
+
 })();

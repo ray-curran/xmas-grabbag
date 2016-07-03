@@ -12,6 +12,8 @@ gem 'faker'
 gem 'angular-rails-templates'
 gem 'bower-rails'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'angular_rails_csrf'
+
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     get '/tradegifts' => 'pairs#tradegifts'
   end
 
+  resources :gifts, only: [:destroy, :create] do
+    member do
+        put '/markbought' => 'gifts#markbought'
+      end
+  end
+
   root 'application#index'
 
   get '*path', :to => redirect('/#/%{path}')
