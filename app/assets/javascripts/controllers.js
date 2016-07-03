@@ -1,18 +1,5 @@
 angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
-.controller('HomeCtrl', ['$scope', '$http', 'kidpairs', 'adultpairs', function($scope, $http, kidpairs, adultpairs) {
-
-
-  kidpairs.success(function(data) {
-    $scope.kidpairs = data;
-  })
-
-  adultpairs.success(function(data) {
-    $scope.adultpairs = data;
-  })
-
-}])
-
 .controller('PersonCtrl', function($scope, $http, $routeParams, allpeople, allpairs, tradegifts) {
 
   $scope.addingGift = false;
@@ -69,3 +56,16 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
   }
 
 })
+
+.controller('HomeCtrl', ['$scope', '$http', 'kidpairs', 'adultpairs', function($scope, $http, kidpairs, adultpairs) {
+
+
+  kidpairs.success(function(data) {
+    $scope.kidpairs = data;
+  })
+
+  adultpairs.success(function(data) {
+    $scope.adultpairs = data;
+  })
+
+}])
