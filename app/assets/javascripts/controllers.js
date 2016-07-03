@@ -2,6 +2,8 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
 .controller('HomeCtrl', function($scope, $http, kidpairs, adultpairs) {
 
+  $scope.addingGift = false;
+
   kidpairs.success(function(data) {
     $scope.kidpairs = data;
   })
@@ -48,5 +50,15 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
+
+  $scope.addNewGift = function addNewGift() {
+    $scope.newestgift = '';
+    $scope.addingGift = false;
+  }
+
+  $scope.showNewRow = function showNewRow(event) {
+    event.preventDefault();
+    $scope.addingGift = true;
+  }
 
 })

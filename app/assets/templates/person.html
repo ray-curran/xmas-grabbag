@@ -11,19 +11,26 @@
       <h3 class="white-text">Current Gift List:</h3>
       <table class="maintable table white-text text-center">
         <tbody>
+
          <tr ng-repeat="gift in personGifts | filter:{bought:false}" >
           <td><input ng-change="markBought(gift)" type="checkbox" ng-model="gift.bought">  Bought?</td>
           <td><a target="_blank" ng-href="http://google.com/search?q={{gift.name}}">{{gift.name}}</a></td>
           <td><a href="#" ng-click="removeGift(gift)" class="red-text">Remove</a></td>
         </tr>
-        <tr><td colspan='3'><a href="#">Add a new gift!</a></td></tr>
+
+        <tr ng-hide="addingGift" id="newgiftrow"><td colspan='3'><a ng-click="showNewRow($event)" href="#">Add a new gift!</a></td></tr>
+
+        <tr ng-show="addingGift"><td colspan="3"><form ng-submit="addNewGift()"><input id="newgiftinput" ng-model="newestgift" placeholder="What gift do you want to add?" /></form></td></tr>
+
         <tr ng-show="anyBought(personGifts)"><td colspan='3' class="text-left"><h3>Already Bought:</h3></td></tr>
         <tr ng-repeat="gift in personGifts | filter:{bought:true}" >
           <td><input ng-change="markBought(gift)" type="checkbox" ng-model="gift.bought">  Bought?</td>
           <td><a target="_blank" ng-href="http://google.com/search?q={{gift.name}}">{{gift.name}}</a></td>
           <td></td>
         </tr>
+
       </tbody>
     </div>
   </div>
 </div>
+
