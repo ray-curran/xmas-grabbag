@@ -1,6 +1,6 @@
 angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
-.controller('HomeCtrl', function($scope, $http, kidpairs, adultpairs) {
+.controller('HomeCtrl', ['$scope', '$http', 'kidpairs', 'adultpairs', function($scope, $http, kidpairs, adultpairs) {
 
 
   kidpairs.success(function(data) {
@@ -11,7 +11,7 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
     $scope.adultpairs = data;
   })
 
-})
+}])
 
 .controller('PersonCtrl', function($scope, $http, $routeParams, allpeople, allpairs, tradegifts) {
 
