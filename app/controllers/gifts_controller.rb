@@ -13,4 +13,11 @@ class GiftsController < ApplicationController
     render plain: 'gift destroyed!'
   end
 
+  def create
+    pairing = Trade.last.pairs.select { |pair| pair.recipient_id == params[:recipient_id].to_i }[0]
+    Gift.create({name: params[:name], pair: pairing })
+
+    render plain: 'gift created!'
+  end
+
 end
