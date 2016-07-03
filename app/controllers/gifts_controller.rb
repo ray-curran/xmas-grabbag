@@ -1,4 +1,5 @@
 class GiftsController < ApplicationController
+
   def markbought
     gift = Gift.find_by_id(params[:id])
     gift.update_attributes(bought: !gift.bought)
@@ -15,9 +16,9 @@ class GiftsController < ApplicationController
 
   def create
     pairing = Trade.last.pairs.select { |pair| pair.recipient_id == params[:recipient_id].to_i }[0]
-    Gift.create({name: params[:name], pair: pairing })
+    gift = Gift.create({name: params[:name], pair: pairing })
 
-    render plain: 'gift created!'
+    render json: {name: gift.name, pair_id: gift.pair_id, id: gift.id, bought: gift.bought}
   end
 
 end

@@ -52,9 +52,12 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
 
   $scope.addNewGift = function addNewGift() {
-    var post = {name: $scope.newestgift, recipient_id: $routeParams.id }
-    $http.post('/gifts', post)
-    $scope.personGifts.push({name: $scope.newestgift})
+    if($scope.newestgift.length > 0) {
+      var post = {name: $scope.newestgift, recipient_id: $routeParams.id }
+      $http.post('/gifts', post).success(function(data){
+        $scope.personGifts.push(data);
+      });
+    };
     $scope.newestgift = '';
     $scope.addingGift = false;
   }
