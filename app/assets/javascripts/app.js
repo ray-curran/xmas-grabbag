@@ -29,7 +29,7 @@
 
   .component('pairs', {
     templateUrl: 'pairs.html',
-    controller: 'HomeCtrl'
+    controller: 'PairCtrl'
   })
   .component('person', {
     templateUrl: 'person.html',
@@ -37,7 +37,7 @@
   })
   .component('login', {
     templateUrl: 'login.html',
-    controller: 'HomeCtrl'
+    controller: 'AuthCtrl'
   });
 
 })();
