@@ -86,9 +86,8 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
       },
       data: $scope.user
     }).then(function successCallback(response) {
-        console.log(response.data);
         $rootScope.userLoggedIn = response.data;
-        $location.path('/newValue')
+        $location.path('/adminconsole')
       }, function errorCallback(response) {
         $scope.user.password = '';
         alert('cannot log in with those credentials');
@@ -111,7 +110,6 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
   }
 
   $http.get('/api/loggedin').success(function(data){
-    console.log(data);
     $rootScope.userLoggedIn = data;
   });
 
