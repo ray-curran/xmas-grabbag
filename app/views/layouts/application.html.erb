@@ -20,7 +20,8 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/login">Login</a></li>
+        <li><a ng-show="userLoggedIn == null" ng-href="/login">Login</a></li>
+        <li><a ng-hide="userLoggedIn == null" ng-click="logout()">Logout</a></li>
         <li><a href="#">Current List</a></li>
       </ul>
     </div>

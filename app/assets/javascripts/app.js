@@ -9,6 +9,9 @@
       .when('/person/:id', {
         template: '<person></person>'
       })
+      .when('/login', {
+        template: '<login></login>'
+      })
       .otherwise({redirectTo: function(current, path, search) {
         if(search.goto) {
           return '/' + search.goto;
@@ -31,6 +34,10 @@
   .component('person', {
     templateUrl: 'person.html',
     controller: 'PersonCtrl'
+  })
+  .component('login', {
+    templateUrl: 'login.html',
+    controller: 'HomeCtrl'
   });
 
 })();
