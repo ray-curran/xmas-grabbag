@@ -87,7 +87,7 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
       data: $scope.user
     }).then(function successCallback(response) {
         $rootScope.userLoggedIn = response.data;
-        $location.path('/adminconsole')
+        $location.path('/admin')
       }, function errorCallback(response) {
         $scope.user.password = '';
         alert('cannot log in with those credentials');
@@ -99,13 +99,14 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
   }])
 
-.controller('HomeCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+.controller('HomeCtrl', ['$scope', '$http', '$rootScope', '$location', function($scope, $http, $rootScope, $location) {
 
 
   $scope.logout = function logout() {
     $http.post('/api/logout').then(function(data) {
       alert('logged out!!!');
       $rootScope.userLoggedIn = null;
+      $location.path('/');
     })
   }
 
@@ -113,5 +114,10 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
     $rootScope.userLoggedIn = data;
   });
 
-}]);
+}])
+
+.controller('AdminCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+
+
+}])
 
