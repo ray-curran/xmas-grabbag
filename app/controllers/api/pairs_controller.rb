@@ -53,4 +53,23 @@ class Api::PairsController < ApplicationController
     render json: Person.all
   end
 
+  def login
+    user = User.find_by_username(params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      render json: user
+    else
+      return nil
+    end
+  end
+
+  def logout
+    session[:user_id] = nil
+    render json:{success: 'logged out'}
+  end
+
+  def loggedin
+    render json: current_user
+  end
+
 end

@@ -57,7 +57,7 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
 }])
 
-.controller('HomeCtrl', ['$scope', '$http', 'kidpairs', 'adultpairs', function($scope, $http, kidpairs, adultpairs) {
+.controller('PairCtrl', ['$scope', '$http', 'kidpairs', 'adultpairs', '$location', function($scope, $http, kidpairs, adultpairs, $location) {
 
 
   kidpairs.success(function(data) {
@@ -68,4 +68,56 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
     $scope.adultpairs = data;
   })
 
+
+
 }])
+
+
+.controller('AuthCtrl', ['$scope', '$http', '$rootScope', '$location', function($scope, $http, $rootScope, $location) {
+
+      // Simple GET request example:
+  $scope.login = function login() {
+    $http({
+      method: 'POST',
+      url: '/api/login',
+      dataType: 'json',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      data: $scope.user
+    }).then(function successCallback(response) {
+        $rootScope.userLoggedIn = response.data;
+        $location.path('/admin')
+      }, function errorCallback(response) {
+        $scope.user.password = '';
+        alert('cannot log in with those credentials');
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+  };
+
+
+  }])
+
+.controller('HomeCtrl', ['$scope', '$http', '$rootScope', '$location', function($scope, $http, $rootScope, $location) {
+
+
+  $scope.logout = function logout() {
+    $http.post('/api/logout').then(function(data) {
+      alert('logged out!!!');
+      $rootScope.userLoggedIn = null;
+      $location.path('/');
+    })
+  }
+
+  $http.get('/api/loggedin').success(function(data){
+    $rootScope.userLoggedIn = data;
+  });
+
+}])
+
+.controller('AdminCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+
+
+}])
+

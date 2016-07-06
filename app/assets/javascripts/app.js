@@ -9,6 +9,12 @@
       .when('/person/:id', {
         template: '<person></person>'
       })
+      .when('/login', {
+        template: '<login></login>'
+      })
+      .when('/admin', {
+        template: '<admin></admin>'
+      })
       .otherwise({redirectTo: function(current, path, search) {
         if(search.goto) {
           return '/' + search.goto;
@@ -26,11 +32,19 @@
 
   .component('pairs', {
     templateUrl: 'pairs.html',
-    controller: 'HomeCtrl'
+    controller: 'PairCtrl'
   })
   .component('person', {
     templateUrl: 'person.html',
     controller: 'PersonCtrl'
+  })
+  .component('login', {
+    templateUrl: 'login.html',
+    controller: 'AuthCtrl'
+  }).component('admin', {
+    templateUrl: 'admin.html',
+    controller: 'AdminCtrl'
   });
+
 
 })();
