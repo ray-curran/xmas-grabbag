@@ -72,6 +72,8 @@ class Api::PairsController < ApplicationController
     render json: current_user
   end
 
-
+  def whichtrade
+    render json: Trade.last
+  end
 
 end

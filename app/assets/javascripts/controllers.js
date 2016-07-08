@@ -57,7 +57,7 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
 }])
 
-.controller('PairCtrl', ['$scope', '$http', 'kidpairs', 'adultpairs', '$location', function($scope, $http, kidpairs, adultpairs, $location) {
+.controller('PairCtrl', ['$scope', '$http', 'kidpairs', 'adultpairs', '$location', 'whichtrade', function($scope, $http, kidpairs, adultpairs, $location, whichtrade) {
 
 
   kidpairs.success(function(data) {
@@ -68,7 +68,9 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
     $scope.adultpairs = data;
   })
 
-
+  whichtrade.success(function(data) {
+    $scope.tradeyear = data.year;
+  })
 
 }])
 
