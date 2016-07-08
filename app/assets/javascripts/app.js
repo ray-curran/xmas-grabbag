@@ -15,6 +15,9 @@
       .when('/admin', {
         template: '<admin></admin>'
       })
+      .when('/trade/:year', {
+        template: '<histtrade></histtrade>'
+      })
       .otherwise({redirectTo: function(current, path, search) {
         if(search.goto) {
           return '/' + search.goto;
@@ -41,9 +44,14 @@
   .component('login', {
     templateUrl: 'login.html',
     controller: 'AuthCtrl'
-  }).component('admin', {
+  })
+  .component('admin', {
     templateUrl: 'admin.html',
     controller: 'AdminCtrl'
+  })
+  .component('histtrade', {
+    templateUrl: 'hist_trades.html',
+    controller: 'HistCtrl'
   });
 
 

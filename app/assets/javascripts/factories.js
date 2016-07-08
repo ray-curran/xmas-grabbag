@@ -30,3 +30,14 @@ angular.module('GrabBag.factories', [])
     });
 }])
 
+.factory('whichtrade', ['$http', function($http) {
+  return $http.get('/api/whichtrade').success(function(data){
+      return data;
+    });
+}])
+
+.factory('alltrades', ['$http', function($http) {
+  return $http.get('/api/alltrades').success(function(data){
+      return data;
+    });
+}])

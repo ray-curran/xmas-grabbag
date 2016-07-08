@@ -63,6 +63,15 @@ class Api::PairsController < ApplicationController
     end
   end
 
+  def newlist
+    if current_user
+      trade = Trade.make_another
+      render json: Trade.last
+    else
+      return nil
+    end
+  end
+
   def logout
     session[:user_id] = nil
     render json:{success: 'logged out'}
@@ -70,6 +79,39 @@ class Api::PairsController < ApplicationController
 
   def loggedin
     render json: current_user
+  end
+
+  def whichtrade
+    render json: Trade.last
+  end
+
+  def alltrades
+    pairs_n_trades = Trade.all.map do |trade|
+      { id: trade.id,
+        year: trade.year,
+        adult_pairs: trade.pairs.select {|pair| Person.find_by_id(pair.recipient_id).adult_or_kid == 'adult'}.map{|pair|
+          { recipient: Person.find_by_id(pair.recipient_id).name,
+          giver: Person.find_by_id(pair.giver_id).name
+          }
+        },
+        kid_pairs: trade.pairs.select {|pair| Person.find_by_id(pair.recipient_id).adult_or_kid == 'kid'}.map{|pair|
+          { recipient: Person.find_by_id(pair.recipient_id).name,
+          giver: Person.find_by_id(pair.giver_id).name
+          }
+        }
+      }
+    end
+
+    render json: pairs_n_trades
+  end
+
+  def deletetrade
+    if current_user && Time.now.year <= params[:year].to_i
+      Trade.find_by_year(params[:year]).destroy
+      render json: {success: 'deleted'}
+    else
+      return nil
+    end
   end
 
 end

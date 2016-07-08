@@ -51,25 +51,19 @@ people_for_creation = [
   Family.find_by_name("Sean O'Shea").people.create!(seans_for_creation)
 ]
 
-Trade.create!({year: 2015})
+Trade.create!({year: 2013})
 
-pairs_for_2015 = [
-  {recipient: Person.find_by_name('Nancy'), giver: Person.find_by_name('Mary Pat'), trade: Trade.first},
-  {recipient: Person.find_by_name('Mary Pat'), giver: Person.find_by_name('Karen'), trade: Trade.first},
-  {recipient: Person.find_by_name('Karen'), giver: Person.find_by_name('Ray'), trade: Trade.first},
-  {recipient: Person.find_by_name('Ray'), giver: Person.find_by_name('Nancy'), trade: Trade.first},
-  {recipient: Person.find_by_name('Raymond'), giver: Person.find_by_name('Megan'), trade: Trade.first},
-  {recipient: Person.find_by_name('Megan'), giver: Person.find_by_name('Kaitlin'), trade: Trade.first},
-  {recipient: Person.find_by_name('Kaitlin'), giver: Person.find_by_name('Shannon'), trade: Trade.first},
-  {recipient: Person.find_by_name('Shannon'), giver: Person.find_by_name('Raymond'), trade: Trade.first}
-]
+Trade.make_another
+Trade.make_another
 
-Trade.first.pairs.create!(pairs_for_2015)
+Trade.last.pairs.each do |pair|
+  gifts_for_creation = [
+    {pair: pair, name: 'Slinky'},
+    {pair: pair, name: 'Robot'},
+    {pair: pair, name: 'Stretch Armstrong'},
+  ]
+  Gift.create!(gifts_for_creation)
+end
 
-gifts_for_creation = [
-  {pair: Pair.first, name: 'Slinky'},
-  {pair: Pair.first, name: 'Robot'},
-  {pair: Pair.first, name: 'Stretch Armstrong'},
-]
+User.create(username: 'nancy', password: 'ivetic')
 
-Gift.create!(gifts_for_creation)

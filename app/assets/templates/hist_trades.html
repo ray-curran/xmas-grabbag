@@ -6,7 +6,7 @@
         <thead>
           <tr>
             <th colspan="2">
-              <h1>Kid List - {{tradeyear}}</h1>
+              <h1>Kid List - {{thistrade.year}}</h1>
             </th>
           </tr>
           <tr>
@@ -15,10 +15,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="pair in kidpairs | orderBy:'giver'" >
+          <tr ng-repeat="pair in thistrade.kid_pairs | orderBy:'giver'" >
 
               <td>{{pair.giver}}</td>
-              <td><a ng-href="/person/{{pair.recipient_id}}">{{pair.recipient}}</a></td>
+              <td>{{pair.recipient}}</td>
 
           </tr>
         </tbody>
@@ -30,7 +30,7 @@
         <thead>
           <tr>
             <th colspan="2">
-              <h1>Adult List - {{tradeyear}}</h1>
+              <h1>Adult List - {{thistrade.year}}</h1>
             </th>
           </tr>
           <tr>
@@ -39,9 +39,9 @@
           </tr>
         </thead>
         <tbody>
-         <tr ng-repeat="pair in adultpairs | orderBy:'giver'" >
+         <tr ng-repeat="pair in thistrade.adult_pairs | orderBy:'giver'" >
           <td>{{pair.giver}}</td>
-          <td><a ng-href="/person/{{pair.recipient_id}}">{{pair.recipient}}</a></td>
+          <td>{{pair.recipient}}</td>
         </tr>
       </tbody>
     </table>

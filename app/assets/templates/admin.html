@@ -3,6 +3,20 @@
 </div>
 
 <div class="white-text text-center" ng-hide="$root.userLoggedIn == null">
-  <h1>Congrats on logging in!!</h1>
+  <button class="btn btn-success" ng-click="newlist()">Generate New List</button>
 </div>
+<br>
+<div class="col-md-6 col-md-offset-3 white-text text-center" ng-hide="$root.userLoggedIn == null">
+  <h1>Previous Trades</h1>
+    <table class="maintable table white-text text-center gray-back">
+        <tbody>
+         <tr ng-repeat="trade in alltrades | orderBy:'-year'" >
+          <td></td>
+          <td><a ng-href="/trade/{{trade.year}}">{{trade.year}} Grab Bag List</a></td>
+          <td ng-if="$first"><a class="orange-text" ng-click="deleteTrade(trade.year)" href="/admin" ng-if="$first">Delete this List</a></td>
+          <td ng-if="!$first"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
