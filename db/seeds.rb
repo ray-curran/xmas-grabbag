@@ -65,4 +65,5 @@ Trade.last.pairs.each do |pair|
   Gift.create!(gifts_for_creation)
 end
 
+User.create(username: 'nancy', password: 'ivetic')
 
