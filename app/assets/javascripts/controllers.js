@@ -146,6 +146,15 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
     $scope.alltrades = data;
   });
 
+  $scope.deleteTrade = function(trade_year) {
+    $http.delete('/api/deletetrade/' + trade_year).then(function successCallback(response) {
+        $scope.alltrades = $scope.alltrades.filter(function(trade){
+          return trade.year != trade_year});
+      }, function errorCallback(response) {
+        alert('Cannot delete this trade!');
+      });
+  }
+
 }])
 
 .controller('HistCtrl', ['$scope', '$http', '$rootScope','$location', 'alltrades', '$routeParams', function($scope, $http, $rootScope, $location, alltrades, $routeParams) {

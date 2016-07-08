@@ -11,7 +11,10 @@
     <table class="maintable table white-text text-center gray-back">
         <tbody>
          <tr ng-repeat="trade in alltrades | orderBy:'-year'" >
+          <td></td>
           <td><a ng-href="/trade/{{trade.year}}">{{trade.year}} Grab Bag List</a></td>
+          <td ng-if="$first"><a class="orange-text" ng-click="deleteTrade(trade.year)" href="/admin" ng-if="$first">Delete this List</a></td>
+          <td ng-if="!$first"></td>
         </tr>
       </tbody>
     </table>

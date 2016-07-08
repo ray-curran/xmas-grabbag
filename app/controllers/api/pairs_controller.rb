@@ -105,4 +105,13 @@ class Api::PairsController < ApplicationController
     render json: pairs_n_trades
   end
 
+  def deletetrade
+    if current_user && Time.now.year <= params[:year].to_i
+      Trade.find_by_year(params[:year]).destroy
+      render json: {success: 'deleted'}
+    else
+      return nil
+    end
+  end
+
 end
