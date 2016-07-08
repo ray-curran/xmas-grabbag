@@ -118,8 +118,17 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
 }])
 
-.controller('AdminCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+.controller('AdminCtrl', ['$scope', '$http', '$rootScope','$location', function($scope, $http, $rootScope, $location) {
 
+  $scope.newlist = function newlist() {
+    $http.post('/api/newlist').then(function successCallback(response) {
+        alert('trade created!');
+        $location.path('/');
+      }, function errorCallback(response) {
+        alert('must be logged in!')
+        $location.path('');
+      });
+  };
 
 }])
 

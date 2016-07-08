@@ -63,6 +63,15 @@ class Api::PairsController < ApplicationController
     end
   end
 
+  def newlist
+    if current_user
+      Trade.make_another
+      render json:{success: 'logged out'}
+    else
+      return nil
+    end
+  end
+
   def logout
     session[:user_id] = nil
     render json:{success: 'logged out'}
