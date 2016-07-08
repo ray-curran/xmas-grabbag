@@ -72,4 +72,6 @@ class Api::PairsController < ApplicationController
     render json: current_user
   end
 
+
+
 end
