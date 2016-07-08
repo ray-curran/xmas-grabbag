@@ -65,8 +65,8 @@ class Api::PairsController < ApplicationController
 
   def newlist
     if current_user
-      Trade.make_another
-      render json:{success: 'logged out'}
+      trade = Trade.make_another
+      render json: Trade.last
     else
       return nil
     end
@@ -83,6 +83,26 @@ class Api::PairsController < ApplicationController
 
   def whichtrade
     render json: Trade.last
+  end
+
+  def alltrades
+    pairs_n_trades = Trade.all.map do |trade|
+      { id: trade.id,
+        year: trade.year,
+        adult_pairs: trade.pairs.select {|pair| Person.find_by_id(pair.recipient_id).adult_or_kid == 'adult'}.map{|pair|
+          { recipient: Person.find_by_id(pair.recipient_id).name,
+          giver: Person.find_by_id(pair.giver_id).name
+          }
+        },
+        kid_pairs: trade.pairs.select {|pair| Person.find_by_id(pair.recipient_id).adult_or_kid == 'kid'}.map{|pair|
+          { recipient: Person.find_by_id(pair.recipient_id).name,
+          giver: Person.find_by_id(pair.giver_id).name
+          }
+        }
+      }
+    end
+
+    render json: pairs_n_trades
   end
 
 end

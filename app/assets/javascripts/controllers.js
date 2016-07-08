@@ -129,17 +129,30 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
 }])
 
-.controller('AdminCtrl', ['$scope', '$http', '$rootScope','$location', function($scope, $http, $rootScope, $location) {
+.controller('AdminCtrl', ['$scope', '$http', '$rootScope','$location', 'alltrades', function($scope, $http, $rootScope, $location, alltrades) {
 
   $scope.newlist = function newlist() {
     $http.post('/api/newlist').then(function successCallback(response) {
         alert('trade created!');
+        $scope.alltrades.push(response.data);
         $location.path('/');
       }, function errorCallback(response) {
         alert('must be logged in!')
         $location.path('');
       });
   };
+
+  alltrades.success(function(data) {
+    $scope.alltrades = data;
+  });
+
+}])
+
+.controller('HistCtrl', ['$scope', '$http', '$rootScope','$location', 'alltrades', '$routeParams', function($scope, $http, $rootScope, $location, alltrades, $routeParams) {
+
+  alltrades.success(function(data) {
+    $scope.thistrade = data.filter(function(trade) { return trade.year == $routeParams.year})[0];
+  });
 
 }])
 

@@ -36,3 +36,8 @@ angular.module('GrabBag.factories', [])
     });
 }])
 
+.factory('alltrades', ['$http', function($http) {
+  return $http.get('/api/alltrades').success(function(data){
+      return data;
+    });
+}])

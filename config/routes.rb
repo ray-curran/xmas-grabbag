@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get '/loggedin' => 'pairs#loggedin'
     get '/whichtrade' => 'pairs#whichtrade'
     post '/newlist' => 'pairs#newlist'
+    get '/alltrades' => 'pairs#alltrades'
   end
 
   resources :gifts, only: [:destroy, :create] do
