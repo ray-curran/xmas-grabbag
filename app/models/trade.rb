@@ -31,6 +31,9 @@ class Trade < ActiveRecord::Base
     until restrictions(adult_trades)
       adult_trades = make_adult
     end
+    new_trade = Trade.create(year: Trade.last.year + 1)
+    new_trade.pairs.create(kid_trades)
+    new_trade.pairs.create(adult_trades)
   end
 
   def self.make_adult
@@ -40,8 +43,7 @@ class Trade < ActiveRecord::Base
       adult[:recipient_id] = possible_giftee_ids.sample
       possible_giftee_ids.delete(adult[:recipient_id])
     end
-    print possible_giftee_ids
-    puts adults
+    adults
   end
 
   def self.make_kid
@@ -51,8 +53,7 @@ class Trade < ActiveRecord::Base
       kid[:recipient_id] = possible_giftee_ids.sample
       possible_giftee_ids.delete(kid[:recipient_id])
     end
-    print possible_giftee_ids
-    return kids
+    kids
   end
 
 end
