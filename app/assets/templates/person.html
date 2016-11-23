@@ -6,12 +6,12 @@
     </div>
     <div class="col-md-6 gray-back">
       <h2 class="white-text">Age: {{ calculateAge(person.birthday) }}</h2>
+      <h3 class="white-text">Birthday: {{person.birthday | date }}</h3>
       <h3><a target="_blank" ng-href="http://www.google.com/search?q=good+christmas+gift+for+{{calculateAge(person.birthday)}}+year+old">Need gift suggestions?</a></h3>
       <hr>
       <h3 class="white-text">Current Gift List:</h3>
       <table class="maintable table white-text text-center">
         <tbody>
-
          <tr ng-repeat="gift in personGifts | filter:{bought:false}" >
           <td><input ng-change="markBought(gift)" type="checkbox" ng-model="gift.bought">  Bought?</td>
           <td><a target="_blank" ng-href="http://google.com/search?q={{gift.name}}">{{gift.name}}</a></td>

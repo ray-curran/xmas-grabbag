@@ -1,3 +1,4 @@
+
 angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
 .controller('PersonCtrl', ['$scope', '$http', '$routeParams', 'allpeople', 'allpairs', 'tradegifts', function($scope, $http, $routeParams, allpeople, allpairs, tradegifts) {
