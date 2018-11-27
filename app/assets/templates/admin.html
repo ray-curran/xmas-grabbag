@@ -20,3 +20,16 @@
     </table>
   </div>
 
+<div class="col-md-6 col-md-offset-3 white-text text-center" ng-hide="$root.userLoggedIn == null">
+  <h1>People</h1>
+    <table class="maintable table white-text text-center gray-back">
+        <tbody>
+         <tr ng-repeat="person in allpeople | orderBy:'family_id'" >
+          <td>{{person.name}}</td>
+          <td><a ng-click="toggleActive(person.id)" href='/admin'>{{person.active}}</a></td>
+          <td>{{person.family_id}}</td>
+          <td>{{person.adult_or_kid}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

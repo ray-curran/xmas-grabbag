@@ -114,4 +114,10 @@ class Api::PairsController < ApplicationController
     end
   end
 
+  def toggleactive
+    person = Person.find(params[:id])
+    person.update_attributes(active: !person.active)
+    render json: person
+  end
+
 end
