@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     post '/newlist' => 'pairs#newlist'
     get '/alltrades' => 'pairs#alltrades'
     delete '/deletetrade/:year' => 'pairs#deletetrade'
+    put '/toggleactive/:id' => 'pairs#toggleactive'
   end
 
   resources :gifts, only: [:destroy, :create] do

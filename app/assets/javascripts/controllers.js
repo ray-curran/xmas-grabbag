@@ -130,7 +130,7 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
 
 }])
 
-.controller('AdminCtrl', ['$scope', '$http', '$rootScope','$location', 'alltrades', function($scope, $http, $rootScope, $location, alltrades) {
+.controller('AdminCtrl', ['$scope', '$http', '$rootScope','$location', 'alltrades', 'allpeople', function($scope, $http, $rootScope, $location, alltrades, allpeople) {
 
   $scope.newlist = function newlist() {
     $http.post('/api/newlist').then(function successCallback(response) {
@@ -138,6 +138,7 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
         $scope.alltrades.push(response.data);
         $location.path('/');
       }, function errorCallback(response) {
+        console.log(response)
         alert('must be logged in!')
         $location.path('');
       });
@@ -147,12 +148,25 @@ angular.module('GrabBag.controllers', ['GrabBag.factories'])
     $scope.alltrades = data;
   });
 
+  allpeople.success(function(data) {
+    console.log(data)
+    $scope.allpeople = data;
+  })
+
   $scope.deleteTrade = function(trade_year) {
     $http.delete('/api/deletetrade/' + trade_year).then(function successCallback(response) {
         $scope.alltrades = $scope.alltrades.filter(function(trade){
           return trade.year != trade_year});
       }, function errorCallback(response) {
         alert('Cannot delete this trade!');
+      });
+  }
+
+    $scope.toggleActive = function(id) {
+    $http.put('/api/toggleactive/' + id).then(function successCallback(response) {
+        console.log(response)
+      }, function errorCallback(response) {
+        alert('Could not toggle');
       });
   }
 
