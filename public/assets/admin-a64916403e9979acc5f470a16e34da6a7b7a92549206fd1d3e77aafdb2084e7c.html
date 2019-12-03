@@ -1,0 +1,35 @@
+<div class="white-text text-center" ng-show="$root.userLoggedIn == null">
+  <h1>Sorry, you don't have access to this page. Log in to continue!</h1>
+</div>
+
+<div class="white-text text-center" ng-hide="$root.userLoggedIn == null">
+  <button class="btn btn-success" ng-click="newlist()">Generate New List</button>
+</div>
+<br>
+<div class="col-md-6 col-md-offset-3 white-text text-center" ng-hide="$root.userLoggedIn == null">
+  <h1>Previous Trades</h1>
+    <table class="maintable table white-text text-center gray-back">
+        <tbody>
+         <tr ng-repeat="trade in alltrades | orderBy:'-year'" >
+          <td></td>
+          <td><a ng-href="/trade/{{trade.year}}">{{trade.year}} Grab Bag List</a></td>
+          <td ng-if="$first"><a class="orange-text" ng-click="deleteTrade(trade.year)" href="/admin" ng-if="$first">Delete this List</a></td>
+          <td ng-if="!$first"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+<div class="col-md-6 col-md-offset-3 white-text text-center" ng-hide="$root.userLoggedIn == null">
+  <h1>People</h1>
+    <table class="maintable table white-text text-center gray-back">
+        <tbody>
+         <tr ng-repeat="person in allpeople | orderBy:'family_id'" >
+          <td>{{person.name}}</td>
+          <td><a ng-click="toggleActive(person.id)" href='/admin'>{{person.active}}</a></td>
+          <td>{{person.family_id}}</td>
+          <td>{{person.adult_or_kid}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

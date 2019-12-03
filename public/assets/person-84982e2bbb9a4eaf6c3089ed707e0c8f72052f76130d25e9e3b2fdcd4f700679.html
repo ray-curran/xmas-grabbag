@@ -1,0 +1,36 @@
+
+<div class='container bottom-margin'>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-1 text-center"><img style="border-radius: 100%" ng-src="https://lh3.googleusercontent.com/-Y2IJzlUUV70/AAAAAAAAAAI/AAAAAAAAAAA/HMC3aK1S30o/photo.jpg"><br>
+    <h1 class="white-text">{{person.name}}</h1>
+    </div>
+    <div class="col-md-6 gray-back">
+      <h2 class="white-text">Age: {{ calculateAge(person.birthday) }}</h2>
+      <h3 class="white-text">Birthday: {{person.birthday | date }}</h3>
+      <h3><a target="_blank" ng-href="http://www.google.com/search?q=good+christmas+gift+for+{{calculateAge(person.birthday)}}+year+old">Need gift suggestions?</a></h3>
+      <hr>
+      <h3 class="white-text">Current Gift List:</h3>
+      <table class="maintable table white-text text-center">
+        <tbody>
+         <tr ng-repeat="gift in personGifts | filter:{bought:false}" >
+          <td><input ng-change="markBought(gift)" type="checkbox" ng-model="gift.bought">  Bought?</td>
+          <td><a target="_blank" ng-href="http://google.com/search?q={{gift.name}}">{{gift.name}}</a></td>
+          <td><a href="#" ng-click="removeGift(gift)" class="red-text">Remove</a></td>
+        </tr>
+
+        <tr ng-hide="addingGift" id="newgiftrow"><td colspan='3'><a ng-click="showNewRow($event)" href="#">Add a new gift!</a></td></tr>
+
+        <tr ng-show="addingGift"><td colspan="3"><form ng-submit="addNewGift()"><input id="newgiftinput" ng-model="newestgift" placeholder="What gift do you want to add?" /></form></td></tr>
+
+        <tr ng-show="anyBought(personGifts)"><td colspan='3' class="text-left"><h3>Already Bought:</h3></td></tr>
+        <tr ng-repeat="gift in personGifts | filter:{bought:true}" >
+          <td><input ng-change="markBought(gift)" type="checkbox" ng-model="gift.bought">  Bought?</td>
+          <td><a target="_blank" ng-href="http://google.com/search?q={{gift.name}}">{{gift.name}}</a></td>
+          <td></td>
+        </tr>
+
+      </tbody>
+    </div>
+  </div>
+</div>
+

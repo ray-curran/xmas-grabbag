@@ -1,0 +1,50 @@
+
+<div class='container'>
+  <div class="row">
+    <div class="col-md-6">
+      <table class="maintable table white-text text-center gray-back">
+        <thead>
+          <tr>
+            <th colspan="2">
+              <h1>Kid List - {{tradeyear}}</h1>
+            </th>
+          </tr>
+          <tr>
+            <th><h3>Buyer:</h3></th>
+            <th><h3>Buys For:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="pair in kidpairs | orderBy:'giver'" >
+
+              <td>{{pair.giver}}</td>
+              <td><a ng-href="/person/{{pair.recipient_id}}">{{pair.recipient}}</a></td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-6">
+      <table class="maintable table white-text text-center gray-back">
+        <thead>
+          <tr>
+            <th colspan="2">
+              <h1>Adult List - {{tradeyear}}</h1>
+            </th>
+          </tr>
+          <tr>
+            <th><h3>Buyer:</h3></th>
+            <th><h3>Buys For:</h3></th>
+          </tr>
+        </thead>
+        <tbody>
+         <tr ng-repeat="pair in adultpairs | orderBy:'giver'" >
+          <td>{{pair.giver}}</td>
+          <td><a ng-href="/person/{{pair.recipient_id}}">{{pair.recipient}}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
