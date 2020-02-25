@@ -8,7 +8,7 @@ gem 'rails', '~> 4.2.10'
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'faker'
 gem 'angular-rails-templates'
 gem 'bower-rails'
